@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getUsers } from "./api/userApi";
 
 function App() {
-  const [users, setUsers] = useState([
-    { id: 1, name: "Cory", email: "c@h.com" },
-    { id: 2, name: "Megan", email: "m@c.com" },
-    { id: 3, name: "Tami", email: "t@tonga.com" }
-  ]);
+  const [users, setUsers] = useState([]);
+
+  // useEffect runs by default after every render.
+  useEffect(() => {
+    // Using _users to avoid naming confusion with users above
+    getUsers().then(_users => setUsers(_users));
+  }, []);
 
   const h1Style = {
     color: "red",
