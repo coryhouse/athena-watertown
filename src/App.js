@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
 function App() {
+  const h1Style = {
+    color: "red",
+    marginBottom: 20
+  };
+
+  const users = [
+    { id: 1, name: "Cory", email: "c@h.com" },
+    { id: 2, name: "Megan", email: "m@c.com" },
+    { id: 3, name: "Tami", email: "t@tonga.com" }
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1 className="header" style={h1Style}>
+        App
+      </h1>
+      <label htmlFor="firstName">First Name</label>
+      <input id="firstName" type="text"></input>
+      <p>My app.</p>
+    </>
   );
 }
 
