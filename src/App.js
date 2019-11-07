@@ -28,19 +28,30 @@ function App() {
       <h1 className="header" style={h1Style}>
         Users
       </h1>
-      {/* Display user data in a table with headers for id, name, and email */}
-      <ul>
-        {users.map(user => (
-          <li>
-            {/* Delay execution via arrow func */}
-            <button onClick={event => handleDelete(user.id)}>Delete</button>
-            {user.name}
-          </li>
-        ))}
-      </ul>
-      <label htmlFor="firstName">First Name</label>
-      <input id="firstName" type="text"></input>
-      <p>My app.</p>
+      {/* Exercise: Display user data in a table with headers for id, name, and email */}
+      <table className="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(user => (
+            <tr key={user.id}>
+              {/* Delay execution via arrow func */}
+              <td>
+                <button onClick={event => handleDelete(user.id)}>Delete</button>
+              </td>
+              <td>{user.id}</td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 }
