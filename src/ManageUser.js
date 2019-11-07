@@ -1,12 +1,19 @@
 import React, { useState } from "react";
+import { addUser } from "./api/userApi";
+import { Redirect } from "react-router-dom";
 
 const ManageUser = () => {
   const [user, setUser] = useState({
     name: "",
     email: ""
   });
+  const [saveCompleted, setSaveCompleted] = useState(false);
 
-  function handleSubmit(event) {}
+  async function handleSubmit(event) {
+    event.preventDefault(); // Stop browser from posting back
+    const savedUser = await addUser(user);
+    setSaveCompleted(true);
+  }
 
   function handleUserChange(event) {
     // Use computed property syntax to reference a property using a variable.
@@ -15,6 +22,7 @@ const ManageUser = () => {
 
   return (
     <>
+      {saveCompleted && <Redirect to="/users" />}
       <h1>Add User</h1>
       <form onSubmit={handleSubmit}>
         <div>
