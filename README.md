@@ -1,3 +1,30 @@
+## Pop Quiz - Day 1
+
+1. What is destructuring? Why would you use it?
+2. What library renders React for the web?
+3. Var is dead. Why? What should ya use instead?
+4. How do you copy an object in JS? Is it a deep or shallow copy? What's the diff?
+5. What tool did we use to generate our React app?
+6. The tool we used, uses Webpack. What's webpack?
+7. What is Babel? Why do we need it?
+8. What tool am I using to format my code? Why is autoformatting useful?
+9. What hook did we use for handling data that changes over time?
+10. When does React re-render?
+11. What hook did we use to run code once, when the component first loads?
+12. We created an infinite loop yesterday with that hook. What was our mistake?
+13. What tool did we use to create a mock API? Why not just hard code some JSON instead?
+14. What did we use to make an HTTP call?
+15. What is the name of React's "flavor" of HTML?
+16. Name at least 3 differences between HTML and the answer to 15. NO LOOKING AT THE BOARD CHEATER. I SEE YOU. SERIOUSLY. STOP.
+17. Is JSX required?
+18. What is JSX compiled down to?
+19. What tool is checking our code quality? Is it configurable? How do I see its output?
+20. Debugging: How do I debug my React app?
+21. I can see my original code in the browser. Is the browser running my original code? If not, what technology is allowing me to see my original code?
+22. What is a function that returns boolean?
+23. Name some useful array methods that are friendly to immutable data.
+24.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
