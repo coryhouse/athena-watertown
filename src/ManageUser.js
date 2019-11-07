@@ -29,7 +29,6 @@ const ManageUser = () => {
         <Input
           label="Name"
           id="name"
-          type="text"
           onChange={handleUserChange}
           value={user.name}
         />
