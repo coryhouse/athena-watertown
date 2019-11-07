@@ -44,6 +44,14 @@ function Users() {
               {/* Delay execution via arrow func */}
               <td>
                 <button onClick={event => handleDelete(user.id)}>Delete</button>
+                <Link to={"/user/" + user.id}>
+                  <button>
+                    Edit{" "}
+                    <span aria-label="athena pencil" role="img">
+                      ✏️
+                    </span>
+                  </button>
+                </Link>
               </td>
               <td>{user.id}</td>
               <td>{user.name}</td>
