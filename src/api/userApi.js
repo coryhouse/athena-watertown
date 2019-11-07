@@ -34,3 +34,18 @@ export function addUser(user) {
     throw new Error("Bad network response.");
   });
 }
+
+export function editUser(user) {
+  return fetch("http://localhost:3001/users/" + user.id, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(user)
+  }).then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error("Bad network response.");
+  });
+}
