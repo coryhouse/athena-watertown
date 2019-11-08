@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Redirect, useRouteMatch } from "react-router-dom";
 import Input from "./Input";
 
-const ManageUser = ({ onUserAdd, users }) => {
+const ManageUser = ({ onAddUser, users, onEditUser }) => {
   const match = useRouteMatch(); // info about the matching URL
   const { userId } = match.params;
 
@@ -23,7 +23,7 @@ const ManageUser = ({ onUserAdd, users }) => {
 
   async function handleSubmit(event) {
     event.preventDefault(); // Stop browser from posting back
-    await onUserAdd(user);
+    user.id ? await onEditUser(user) : await onAddUser(user);
     setSaveCompleted(true);
   }
 
@@ -60,7 +60,8 @@ const ManageUser = ({ onUserAdd, users }) => {
 
 ManageUser.propTypes = {
   users: PropTypes.array.isRequired,
-  onUserAdd: PropTypes.func.isRequired
+  onAddUser: PropTypes.func.isRequired,
+  onEditUser: PropTypes.func.isRequired
 };
 
 export default ManageUser;
