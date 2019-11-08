@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Input(props) {
   return (
     <div>
-      <label htmlFor={props.id}>{props.label}</label>
+      <label htmlFor={props.id}></label>
       <br />
       <input
         id={props.id}
