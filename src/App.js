@@ -5,9 +5,11 @@ import Home from "./Home";
 import ManageUser from "./ManageUser";
 import Nav from "./Nav";
 import { Route } from "react-router-dom";
+import InternationalizationContext from "./InternationalizationContext";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [language, setLanguage] = useState("English");
 
   // useEffect runs by default after every render.
   useEffect(() => {
@@ -36,7 +38,12 @@ function App() {
   }
 
   return (
-    <>
+    <InternationalizationContext.Provider
+      value={{
+        language: language,
+        setLanguage: setLanguage
+      }}
+    >
       <Nav />
       {/* When the URL is at root, load the users component. */}
       <Route path="/" component={Home} exact />
@@ -58,7 +65,7 @@ function App() {
           );
         }}
       />
-    </>
+    </InternationalizationContext.Provider>
   );
 }
 
