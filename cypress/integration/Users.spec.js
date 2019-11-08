@@ -3,7 +3,10 @@ context("Users", () => {
     cy.visit("http://localhost:3000/users");
   });
 
-  it("should delete dasgsag22 when delete is clicked", () => {
-    cy.findByLabelText("Delete user dasgsag22");
+  it("should add and delete a user", () => {
+    cy.findByText("Add User").click();
+    cy.findByLabelText("Name").type("Bob");
+    cy.findByLabelText("Email").type("Bob@compulink.com{enter}");
+    cy.findByLabelText("Delete user Bob").click();
   });
 });
