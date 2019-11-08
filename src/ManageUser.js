@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Redirect, useRouteMatch } from "react-router-dom";
 import Input from "./Input";
 
-const ManageUser = ({ onUserAdd }) => {
+const ManageUser = ({ onUserAdd, users }) => {
   const match = useRouteMatch(); // info about the matching URL
   const { userId } = match.params;
 
@@ -13,10 +14,12 @@ const ManageUser = ({ onUserAdd }) => {
   const [saveCompleted, setSaveCompleted] = useState(false);
 
   useEffect(() => {
-    if (userId) {
-      // Get the userId out of props.users
+    if (userId && users.length > 0) {
+      const userToEdit = users.find(user => user.id === parseInt(userId, 10));
+      if (!userToEdit) return; // todo Show 404 page because user wasn't found
+      setUser(userToEdit);
     }
-  });
+  }, [userId, users]);
 
   async function handleSubmit(event) {
     event.preventDefault(); // Stop browser from posting back
@@ -53,6 +56,11 @@ const ManageUser = ({ onUserAdd }) => {
       </form>
     </>
   );
+};
+
+ManageUser.propTypes = {
+  users: PropTypes.array.isRequired,
+  onUserAdd: PropTypes.func.isRequired
 };
 
 export default ManageUser;

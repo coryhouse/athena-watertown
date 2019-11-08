@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getUsers, deleteUser, addUser } from "./api/userApi";
+import { getUsers, deleteUser, addUser, editUser } from "./api/userApi";
 import Users from "./Users";
 import Home from "./Home";
 import ManageUser from "./ManageUser";
@@ -23,9 +23,16 @@ function App() {
     });
   }
 
-  async function handleSubmit(user) {
+  async function handleAddUser(user) {
     const savedUser = await addUser(user);
     setUsers([...users, savedUser]);
+  }
+
+  async function handleEditUser(user) {
+    const savedUser = await editUser(user);
+
+    // replace the saved user in the array using map
+    setUsers(users.map(u => (u.id === user.id ? savedUser : u)));
   }
 
   return (
@@ -42,7 +49,13 @@ function App() {
       <Route
         path="/user/:userId?"
         render={reactRouterProps => {
-          return <ManageUser onUserAdd={handleSubmit} />;
+          return (
+            <ManageUser
+              users={users}
+              onAddUser={handleAddUser}
+              onEditUser={handleEditUser}
+            />
+          );
         }}
       />
     </>
