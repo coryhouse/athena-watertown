@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getUsers, deleteUser } from "./api/userApi";
+import { getUsers, deleteUser, addUser } from "./api/userApi";
 import Users from "./Users";
 import Home from "./Home";
 import ManageUser from "./ManageUser";
@@ -23,6 +23,11 @@ function App() {
     });
   }
 
+  async function handleSubmit(user) {
+    const savedUser = await addUser(user);
+    setUsers([...users, savedUser]);
+  }
+
   return (
     <>
       <Nav />
@@ -34,7 +39,12 @@ function App() {
           return <Users users={users} deleteUser={handleDelete} />;
         }}
       />
-      <Route path="/user/:userId?" component={ManageUser} />
+      <Route
+        path="/user/:userId?"
+        render={reactRouterProps => {
+          return <ManageUser onUserAdd={handleSubmit} />;
+        }}
+      />
     </>
   );
 }

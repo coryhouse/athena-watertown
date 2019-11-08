@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { addUser } from "./api/userApi";
 import { Redirect, useRouteMatch } from "react-router-dom";
 import Input from "./Input";
 
-const ManageUser = () => {
+const ManageUser = ({ onUserAdd }) => {
   const match = useRouteMatch(); // info about the matching URL
   const { userId } = match.params;
 
@@ -21,7 +20,7 @@ const ManageUser = () => {
 
   async function handleSubmit(event) {
     event.preventDefault(); // Stop browser from posting back
-    const savedUser = await addUser(user);
+    await onUserAdd(user);
     setSaveCompleted(true);
   }
 
